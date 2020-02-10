@@ -7,7 +7,7 @@ import (
 
 func main() {
 	startPrimes := 1
-	endPrimes := 200
+	endPrimes := 1000
 	primeArray := []int{}
 
 	jobs := make(chan int, endPrimes-startPrimes)
@@ -45,6 +45,7 @@ func worker(i int, jobs <-chan int, results chan<- int) {
 
 		if checkIfPrime(n) {
 			results <- n
+			fmt.Println("worker ", i, " fant", n)
 		} else {
 			results <- 0
 		}
