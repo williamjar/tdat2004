@@ -7,13 +7,13 @@ import (
 
 func main() {
 	startPrimes := 1
-	endPrimes := 20000
+	endPrimes := 100
 	primeArray := []int{}
 
 	jobs := make(chan int, endPrimes-startPrimes)
 	results := make(chan int, endPrimes-startPrimes)
 
-	go worker(1, jobs, results)
+	
 	go worker(2, jobs, results)
 	go worker(3, jobs, results)
 	go worker(4, jobs, results)
@@ -49,7 +49,6 @@ func worker(i int, jobs <-chan int, results chan<- int) {
 		} else {
 			results <- 0
 		}
-
 	}
 	fmt.Println("worker ", i, " end")
 
