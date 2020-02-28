@@ -13,7 +13,6 @@ func main() {
 	jobs := make(chan int, endPrimes-startPrimes)
 	results := make(chan int, endPrimes-startPrimes)
 
-	
 	go worker(2, jobs, results)
 	go worker(3, jobs, results)
 	go worker(4, jobs, results)
